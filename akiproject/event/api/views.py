@@ -1,16 +1,11 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import generics, serializers, status
+from rest_framework import generics, serializers, status, viewsets
 from event.models import Event
-from .serializers import EventSerializer, CreateEventSerializer
+from .serializers import EventSerializer
 from django.db.models import query
 from django.shortcuts import render, get_object_or_404
 
-class EventViewSet(generics.CreateAPIView):
+class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
-
-    def get(self, request, pk=None):  # get
-        event_object = get_object_or_404(self.queryset, pk=pk)
-        serializer = self.serializer_class(event_object)
-        return Response(serializer.data)

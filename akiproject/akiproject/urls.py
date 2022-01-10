@@ -15,12 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from event.api.views import EventViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('event.urls')),
-    path('api/event', EventViewSet.as_view(), name='EventView')
+    path('', include('event.api.urls'))
 ]
 
 from django.conf import settings
