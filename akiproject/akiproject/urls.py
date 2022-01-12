@@ -19,7 +19,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('event.urls')),
-    path('', include('event.api.urls'))
+    path('', include('event.api.urls')),
+    path('', include('contacts.urls')),
+    path('', include('contacts.api.urls'))
 ]
 
 from django.conf import settings
