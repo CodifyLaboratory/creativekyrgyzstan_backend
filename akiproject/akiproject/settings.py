@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'event',
     'contacts',
-    'mainpage'
+    'mainpage',
+    'association_member'
 ]
 
 MIDDLEWARE = [

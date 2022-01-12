@@ -23,7 +23,9 @@ urlpatterns = [
     path('', include('contacts.urls')),
     path('', include('contacts.api.urls')),
     path('', include('mainpage.urls')),
-    path('', include('mainpage.api.urls'))
+    path('', include('mainpage.api.urls')),
+    path('', include('association_member.urls')),
+    path('', include('association_member.api.urls'))
 ]
 
 from django.conf import settings
