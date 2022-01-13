@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'event',
     'contacts',
     'mainpage',
-    'association_member'
+    'association_member',
+    'about_us'
 ]
 
 MIDDLEWARE = [
@@ -85,6 +86,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# try:
+#     from db_connection import DATABASES
+# except ImportError:
+#     print('****Database setting error using default****')
+#     DATABASES = {
+#         'default': {
+#             # 'ENGINE': 'django.db.backends.sqlite3',
+#             # 'NAME': BASE_DIR / 'db.sqlite3',
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2', 'NAME': 'aki_db', 'USER': 'postgres',
+#                             'PASSWORD': '123', 'HOST': 'localhost', 'PORT': '5432',
+#         }
+#     }
 
 
 # Password validation
@@ -120,6 +133,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+
+
+DATE_FORMAT = '%d-%m-%y'
+
 
 STATICFILES_DIRS = [ BASE_DIR / "static",]
 
