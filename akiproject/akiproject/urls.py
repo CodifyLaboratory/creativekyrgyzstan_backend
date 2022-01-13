@@ -25,7 +25,8 @@ urlpatterns = [
     path('', include('mainpage.urls')),
     path('', include('mainpage.api.urls')),
     path('', include('association_member.urls')),
-    path('', include('association_member.api.urls'))
+    path('', include('association_member.api.urls')),
+    path('', include('about_us.api.urls'))
 ]
 
 from django.conf import settings
