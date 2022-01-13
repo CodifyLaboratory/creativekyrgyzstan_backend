@@ -86,18 +86,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-# try:
-#     from db_connection import DATABASES
-# except ImportError:
-#     print('****Database setting error using default****')
-#     DATABASES = {
-#         'default': {
-#             # 'ENGINE': 'django.db.backends.sqlite3',
-#             # 'NAME': BASE_DIR / 'db.sqlite3',
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2', 'NAME': 'aki_db', 'USER': 'postgres',
-#                             'PASSWORD': '123', 'HOST': 'localhost', 'PORT': '5432',
-#         }
-#     }
 
 
 # Password validation
