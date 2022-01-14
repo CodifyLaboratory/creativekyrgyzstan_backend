@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from .yasg import urlpatterns as doc_urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('event.urls')),
@@ -28,6 +30,8 @@ urlpatterns = [
     path('', include('association_member.api.urls')),
     path('', include('about_us.api.urls'))
 ]
+
+urlpatterns += doc_urls
 
 from django.conf import settings
 from django.conf.urls.static import static
