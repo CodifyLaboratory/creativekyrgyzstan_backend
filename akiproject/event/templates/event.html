@@ -12,8 +12,9 @@
         {% for x in event %}
             {{x.name}}
             {{x.text}}
-            <img src="{{ media_url }}{{ x.image }}" alt="">
-
+        {% endfor %}
+        {% for y in images %}
+            <img src="{{ media_url }}{{ y.image }}" alt="">
         {% endfor %}
     {% endblock %}
 </body>

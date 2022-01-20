@@ -12,6 +12,9 @@ class Contact(models.Model):
     copyright = models.CharField('Copyright', max_length=200)
     studio_name = models.CharField('Studio', max_length=200)
 
+    def __str__(self):
+        return 'Футер'
+
     class Meta:
         verbose_name = 'Наш Контакт'
         verbose_name_plural = 'Наши Контакты'
