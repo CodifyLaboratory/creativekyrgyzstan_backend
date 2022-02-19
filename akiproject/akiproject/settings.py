@@ -141,7 +141,7 @@ USE_TZ = True
 DATE_FORMAT = '%d-%m-%y'
 
 
-STATICFILES_DIRS = [ BASE_DIR / "static",]
+# STATICFILES_DIRS = [ BASE_DIR / "static",]
 
 STATIC_URL = 'static/'
 
