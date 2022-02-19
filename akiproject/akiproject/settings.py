@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'contacts',
     'mainpage',
     'association_member',
-    'about_us'
+    'about_us',
+    'submit'
 ]
 
 MIDDLEWARE = [

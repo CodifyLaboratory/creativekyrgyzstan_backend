@@ -28,7 +28,9 @@ urlpatterns = [
     path('', include('mainpage.api.urls')),
     path('', include('association_member.urls')),
     path('', include('association_member.api.urls')),
-    path('', include('about_us.api.urls'))
+    path('', include('about_us.api.urls')),
+    path('', include('submit.api.urls')),
+    path('', include('submit.urls'))
 ]
 
 urlpatterns += doc_urls
