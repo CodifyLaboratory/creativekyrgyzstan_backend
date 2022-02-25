@@ -31,10 +31,14 @@ class Supervisory(models.Model):  #наблюдательный совет
     def __str__(self) -> str:
         return f'{self.first_name}, {self.last_name}, {self.company_name}'
 
+
+
+from .validators import validate_file_extension
+
 class Reports(models.Model):
     name = models.TextField('Название отчета')
     short_description = models.TextField('Краткое описание', blank=True, null=True)
-    report_text = models.TextField('Отчет')
+    report_text = models.FileField('Отчеты', upload_to='static/reports/name/%d/%m/%Y', validators=[validate_file_extension])
     created_date = models.DateField('Дата создания', blank=True, null=True)
     signature = models.TextField('Должность Ф.И.О. подпись', blank=True, null=True)
     add_info = models.TextField('Дополнительная информация', blank=True, null=True)
@@ -47,21 +51,4 @@ class Reports(models.Model):
     def __str__(self) -> str:
         return f'{self.name}, Дата создания: {self.created_date}'
     
-        # Добавление, удаление информации о членах наблюдательного совета и отчетов 
-
-
-#          О нас
-# Об Ассоциации
-# Миссия и ценности 
-# Инфо наблюдательном совете и членах наблюдательного совета 
-# Отчеты 
-
-
-
-# Краткая информация об АКИ
-# Визуально отдельный  блок с текстом о миссии и ценностях АКИ
-# Перечень членов наблюдательного совета- фото, ФИО, название компании.   https://goo.su/9ub6 (члены НС АКИ)
-# Раздел для  загрузки отчетов АКИ, с возможность давать название отчету и загрузки на сайт в виде приложения 
-# для скачивания или просмотра на отдельной странице. Отчетов может быть неопределенное кол-во. 
-
 
