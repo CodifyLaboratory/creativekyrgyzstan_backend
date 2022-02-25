@@ -38,7 +38,7 @@ from .validators import validate_file_extension
 class Reports(models.Model):
     name = models.TextField('Название отчета')
     short_description = models.TextField('Краткое описание', blank=True, null=True)
-    report_text = models.FileField('Отчеты', upload_to='static/reports/name/%d/%m/%Y', validators=[validate_file_extension])
+    report_text = models.FileField('Отчеты', upload_to='static/reports/%d/%m/%Y', validators=[validate_file_extension])
     created_date = models.DateField('Дата создания', blank=True, null=True)
     signature = models.TextField('Должность Ф.И.О. подпись', blank=True, null=True)
     add_info = models.TextField('Дополнительная информация', blank=True, null=True)
