@@ -1,4 +1,6 @@
 from django.db import models
+
+# from association_member.models import Members
 # Create your models here.
 
 class Submit(models.Model):
@@ -20,9 +22,10 @@ class Submit(models.Model):
     company_email = models.EmailField('Почта')
     company_phone = models.CharField('Телефон', max_length=100, null= True)
 
-    def __str__(self):
-        return self.company_name
 
+
+    def __str__(self):
+        return f'{self.company_name}, {self.full_name}'
     class Meta:
         verbose_name = 'Заявка'
         verbose_name_plural = 'Заявки'
