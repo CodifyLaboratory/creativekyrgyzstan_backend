@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from about_us.models import AboutUs, Reports, Supervisory
+from about_us.models import AboutUs, Founders, Reports, Supervisory
 
 class AboutUsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,3 +16,11 @@ class SupervisorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Supervisory
         fields = '__all__'
+
+
+
+
+class FoundersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Founders
+        fields = '__all__'        
