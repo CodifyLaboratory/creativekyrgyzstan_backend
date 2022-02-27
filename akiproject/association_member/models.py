@@ -1,4 +1,5 @@
 from django.db import models
+# from akiproject.about_us.models import Supervisory
 from submit.models import Submit
 
 class RulesAndPolitics(models.Model):
@@ -15,6 +16,9 @@ class RulesAndPolitics(models.Model):
 
 class Members(models.Model):
     submit = models.OneToOneField(Submit, on_delete=models.SET_NULL, null=True, related_name='submit')
+    # supervisory = models.OneToOneField(Supervisory, on_delete=models.SET_NULL, null=True, related_name='supervisory')
+    # founders = models.OneToOneField(Supervisory, on_delete=models.SET_NULL, null=True, related_name='founders')
+
     photo = models.ImageField('Фото руководителя', upload_to='images/members', null= True, blank= True)
     bio = models.TextField('Краткая биография', null= True, blank= True)
 

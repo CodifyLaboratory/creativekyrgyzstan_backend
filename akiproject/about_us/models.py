@@ -1,4 +1,7 @@
 from django.db import models
+from association_member.models import Members
+from submit.models import Submit
+
 
 class AboutUs(models.Model):
     short_description = models.TextField('Об Ассоциации')
@@ -13,14 +16,13 @@ class AboutUs(models.Model):
     def __str__(self) -> str:
         return 'О нас '
 
+
+
+
 class Supervisory(models.Model):  #наблюдательный совет
-    first_name = models.CharField('Имя', max_length=70)
-    last_name = models.CharField('Фамилия', max_length=70)
-    middle_name = models.CharField('Отчество', max_length=70, null=True, blank=True)
-    company_name = models.CharField('Названии компании', max_length=300, blank=True, null=True)
-    photo = models.ImageField(upload_to='images/photos', null= True, blank= True)
-    add_info = models.TextField('Дополнительная информация')
-    
+    member = models.OneToOneField(Members, on_delete=models.SET_NULL, null=True, blank=True)
+    photo = models.ImageField('Фото руководителя', upload_to='images/photos', null= True, blank= True)
+    add_info = models.TextField('Дополнительная информация', null=True, blank=True)   
 
     class Meta:
         verbose_name = 'Член наблюдательного совета'
@@ -29,7 +31,7 @@ class Supervisory(models.Model):  #наблюдательный совет
 
 
     def __str__(self) -> str:
-        return f'{self.first_name}, {self.last_name}, {self.company_name}'
+        return f'{self.member.submit.full_name}, {self.member.submit.company_name}'
 
 
 
