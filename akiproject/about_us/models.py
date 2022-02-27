@@ -1,3 +1,4 @@
+from email.mime import image
 from django.db import models
 from association_member.models import Members
 from submit.models import Submit
@@ -18,9 +19,24 @@ class AboutUs(models.Model):
 
 
 
+class Founders(models.Model): 
+    founder = models.OneToOneField(Members, verbose_name='Выберите из Члены  АКИ или уже выбран чтобы посмотреть нажмите на карандаш', on_delete=models.SET_NULL, null=True, blank=True)
+    image = models.ImageField('Фото руководителя', upload_to='images/photos', null= True, blank= True)
+    info = models.TextField('Дополнительная информация', null=True, blank=True)   
+
+    class Meta:
+        verbose_name = 'Учредители Ассоциации'
+        verbose_name_plural = 'Учредители Ассоциации'
+
+
+
+    def __str__(self) -> str:
+        return f'{self.founder.submit.full_name}, {self.founder.submit.company_name}'
+
+
 
 class Supervisory(models.Model):  #наблюдательный совет
-    member = models.OneToOneField(Members, on_delete=models.SET_NULL, null=True, blank=True)
+    member = models.OneToOneField(Members, verbose_name='Выберите из Члены  АКИ или уже выбран чтобы посмотреть нажмите на карандаш', on_delete=models.SET_NULL, null=True, blank=True)
     photo = models.ImageField('Фото руководителя', upload_to='images/photos', null= True, blank= True)
     add_info = models.TextField('Дополнительная информация', null=True, blank=True)   
 

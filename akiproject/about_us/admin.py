@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 
-from .models import AboutUs, Reports, Supervisory
+from .models import AboutUs, Founders, Reports, Supervisory
 
 admin.site.register(AboutUs)
 
@@ -12,3 +12,4 @@ class ReportsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Supervisory)
+admin.site.register(Founders)

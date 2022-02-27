@@ -15,10 +15,7 @@ class RulesAndPolitics(models.Model):
 
 
 class Members(models.Model):
-    submit = models.OneToOneField(Submit, on_delete=models.SET_NULL, null=True, related_name='submit')
-    # supervisory = models.OneToOneField(Supervisory, on_delete=models.SET_NULL, null=True, related_name='supervisory')
-    # founders = models.OneToOneField(Supervisory, on_delete=models.SET_NULL, null=True, related_name='founders')
-
+    submit = models.OneToOneField(Submit, verbose_name='Выберите из ЗАЯВКИ или уже выбран чтобы посмотреть нажмите на карандаш', on_delete=models.SET_NULL, null=True, related_name='submit')
     photo = models.ImageField('Фото руководителя', upload_to='images/members', null= True, blank= True)
     bio = models.TextField('Краткая биография', null= True, blank= True)
 
