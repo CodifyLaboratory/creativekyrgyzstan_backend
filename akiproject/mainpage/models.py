@@ -10,5 +10,5 @@ class MainPage(models.Model):
         return "О проекте"
 
     class Meta:
-        verbose_name = 'Преймущества и краткая информация'
+        verbose_name = 'Преимущества и краткая информация'
         verbose_name_plural = 'Главная страница'

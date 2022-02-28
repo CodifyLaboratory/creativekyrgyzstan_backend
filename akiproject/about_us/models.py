@@ -18,6 +18,16 @@ class AboutUs(models.Model):
         return 'О нас '
 
 
+class Advantages(models.Model):
+    about_us = models.ForeignKey(AboutUs, on_delete=models.SET_NULL, null=True, blank=True)
+    subtitle = models.CharField('Заголовка', max_length=300)
+    text = models.TextField('Текст')
+
+    class Meta:
+        verbose_name = 'Почему ценно быть членов АКИ'
+        verbose_name_plural = 'Почему ценно быть членов АКИ'
+
+
 
 class Founders(models.Model): 
     founder = models.OneToOneField(Members, verbose_name='Выберите из Члены  АКИ или уже выбран чтобы посмотреть нажмите на карандаш', on_delete=models.SET_NULL, null=True, blank=True)
