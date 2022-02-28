@@ -1,13 +1,11 @@
 from django.contrib import admin
-from .models import AboutUs, Founders, Reports, Supervisory, Advantages
+from .models import AboutUs, Founders, Reports, Supervisory, Advantages, Purpose, Documents
 
 
-class AdvantagesInline(admin.StackedInline):
-    model = Advantages
-
-@admin.register(AboutUs)
-class AboutUsAdmin(admin.ModelAdmin):
-    inlines = [AdvantagesInline]
+admin.site.register(AboutUs)
+@admin.register(Advantages)
+class AdvantagesAdmin(admin.ModelAdmin):
+    list_display = ('subtitle', )
 
 
 @admin.register(Reports)
@@ -18,3 +16,5 @@ class ReportsAdmin(admin.ModelAdmin):
 
 admin.site.register(Supervisory)
 admin.site.register(Founders)
+admin.site.register(Purpose)
+admin.site.register(Documents)

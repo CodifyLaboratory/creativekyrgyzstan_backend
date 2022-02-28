@@ -4,14 +4,14 @@ from submit.models import Submit
 
 class RulesAndPolitics(models.Model):
     how_to = models.TextField('Как стать членом ассоциаций')
-    politics = models.TextField('Устав и членская политика', null= True, blank= True)
+   # politics = models.TextField('Устав и членская политика', null= True, blank= True)
 
     def __str__(self):
         return "Правила и Политика"
 
     class Meta:
-        verbose_name = 'Устав и членская политика'
-        verbose_name_plural = 'Устав и членская политика'
+        verbose_name = 'Как стать членом ассоциаций'
+        verbose_name_plural = 'Как стать членом ассоциаций'
 
 
 class Members(models.Model):

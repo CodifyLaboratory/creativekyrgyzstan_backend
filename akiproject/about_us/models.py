@@ -6,13 +6,11 @@ from submit.models import Submit
 
 class AboutUs(models.Model):
     short_description = models.TextField('Об Ассоциации')
-    mission = models.TextField('Миссия и ценности')
-    
+    mission = models.TextField('Миссия и ценности')  
 
     class Meta:
         verbose_name = 'Об Ассоциации'
         verbose_name_plural = 'Об Ассоциации'
-
 
     def __str__(self) -> str:
         return 'О нас '
@@ -29,6 +27,18 @@ class Advantages(models.Model):
 
 
 
+class Purpose(models.Model):
+    text = models.TextField('Текст')
+
+    class Meta:
+        verbose_name = 'Цели на год'
+        verbose_name_plural = 'Цели на год'  
+
+
+    def __str__(self) -> str:
+        return 'Цели на год'
+
+
 class Founders(models.Model): 
     founder = models.OneToOneField(Members, verbose_name='Выберите из Члены  АКИ или уже выбран чтобы посмотреть нажмите на карандаш', on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField('Фото руководителя', upload_to='images/photos', null= True, blank= True)
@@ -37,8 +47,6 @@ class Founders(models.Model):
     class Meta:
         verbose_name = 'Учредители Ассоциации'
         verbose_name_plural = 'Учредители Ассоциации'
-
-
 
     def __str__(self) -> str:
         return f'{self.founder.submit.full_name}, {self.founder.submit.company_name}'
@@ -55,10 +63,8 @@ class Supervisory(models.Model):  #наблюдательный совет
         verbose_name_plural = 'Члены наблюдательного совета'
 
 
-
     def __str__(self) -> str:
         return f'{self.member.submit.full_name}, {self.member.submit.company_name}'
-
 
 
 from .validators import validate_file_extension
@@ -78,5 +84,19 @@ class Reports(models.Model):
 
     def __str__(self) -> str:
         return f'{self.name}, Дата создания: {self.created_date}'
+
+
+class Documents(models.Model):
+    rule_doc = models.FileField('Устав', upload_to='static/document/%d/%m/%Y', validators=[validate_file_extension])            
+    politic_doc = models.FileField('Учетная политика', upload_to='static/document/%d/%m/%Y', validators=[validate_file_extension])   
+
+    
+    class Meta:
+        verbose_name = 'Устав, Учетная политика'
+
+
+    def __str__(self) -> str:
+        return f'Устав, Учетная политика'        
+    
     
 
