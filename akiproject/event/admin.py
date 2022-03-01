@@ -8,12 +8,14 @@ from .models import Event, EventImages
 # admin.site.register(Event)
 # admin.site.register(EventImages)
 
-class EventImagesAdmin(admin.StackedInline):
+class EventImagesAdmin(admin.StackedInline):    
     model = EventImages
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
+    list_filter = ('event_date',)
+    search_fields = ('name',) 
+    list_display = ('name', 'event_date',)
     inlines = [EventImagesAdmin]
-
-    class Meta:
-        model = Event
+    save_on_top = True 
+    ordering = ('-event_date',)

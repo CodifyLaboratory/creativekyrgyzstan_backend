@@ -6,9 +6,7 @@ class Event(models.Model):
     name = models.CharField('Название статьи', max_length=400)
     text = models.TextField('Текст татьи')
     post_date = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.name
+    event_date = models.DateField('Дата проведения', auto_now_add=False)
 
     class Meta:
         verbose_name = 'Событие'
