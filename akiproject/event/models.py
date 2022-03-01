@@ -7,6 +7,7 @@ class Event(models.Model):
     text = models.TextField('Текст татьи')
     post_date = models.DateTimeField(auto_now_add=True)
     event_date = models.DateField('Дата проведения', auto_now_add=False)
+    draft = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Событие'
