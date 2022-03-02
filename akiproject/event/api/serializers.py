@@ -6,6 +6,18 @@ class EventSerializer(serializers.ModelSerializer):
         model = Event
         fields = '__all__'
 
+
+class EventPastSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = '__all__'        
+
+
+class EventFutureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = '__all__'                
+
 class EventImagesSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventImages
