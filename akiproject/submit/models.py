@@ -19,13 +19,14 @@ class Submit(models.Model):
     company_logo = models.ImageField('Логотип', upload_to='images/logo', null= True, blank= True)
     company_field = models.CharField('Креативная отрасль компании', max_length=500, null= True)
     company_activity = models.CharField('Деятельность компании', max_length=500, null= True)
-    company_email = models.EmailField('Почта')
+    company_email = models.EmailField('Почта', null= True)
     company_phone = models.CharField('Телефон', max_length=100, null= True)
 
 
 
     def __str__(self):
         return f'{self.company_name}, {self.full_name}'
+        
     class Meta:
         verbose_name = 'Заявка'
         verbose_name_plural = 'Заявки'
