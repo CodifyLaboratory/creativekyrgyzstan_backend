@@ -138,3 +138,6 @@ dmypy.json
 
 
 .migrations
+.media
+.static
+.statifiles
