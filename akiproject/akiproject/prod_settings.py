@@ -7,14 +7,14 @@ SECRET_KEY = 'django-insecure-!c-pnku_!1hi8&eu20vgasd8hAS7$@9tfdohhg=0fl0c4r^2l'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1',]
+ALLOWED_HOSTS = ['127.0.0.1']
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_aki',
+        'NAME': 'user_db',
         'USER': 'postgres',
-        'PASSWORD': '2022kreativ',
+        'PASSWORD': '12345',
         'HOST': 'localhost',
         'PORT': '5432',
     }
