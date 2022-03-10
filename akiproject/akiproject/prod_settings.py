@@ -12,9 +12,9 @@ ALLOWED_HOSTS = ['127.0.0.1']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'user_db',
-        'USER': 'postgres',
-        'PASSWORD': '12345',
+        'NAME': 'aki_db',
+        'USER': 'aki_db_user',
+        'PASSWORD': '21aki_creativ',
         'HOST': 'localhost',
         'PORT': '5432',
     }
