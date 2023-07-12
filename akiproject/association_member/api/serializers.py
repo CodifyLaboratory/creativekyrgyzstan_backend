@@ -19,6 +19,6 @@ class MembersSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         try:
             photo_url = report.photo.url
-            return request.build_absolute_uri('https://creative.kg' + photo_url)
+            return request.build_absolute_uri(photo_url)
         except:
             return None

@@ -33,6 +33,6 @@ class EventImagesSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         try:
             image_url = event.image.url
-            return request.build_absolute_uri('https://creative.kg' + image_url)
+            return request.build_absolute_uri(image_url)
         except:
             return None

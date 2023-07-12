@@ -14,6 +14,6 @@ class SubmitSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         try:            
             logo_url = submit.company_logo.url
-            return request.build_absolute_uri('https://creative.kg' + logo_url)
+            return request.build_absolute_uri(logo_url)
         except ValueError:
             return None
