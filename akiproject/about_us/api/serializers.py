@@ -15,7 +15,7 @@ class AboutUsSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         try:
             image_url = aboutus.picture.url
-            return request.build_absolute_uri(image_url)
+            return request.build_absolute_uri('https://creative.kg' + image_url)
         except ValueError:
             return None
 
@@ -30,7 +30,7 @@ class AboutPicturesSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         try:
             image_url = aboutus.picture.url
-            return request.build_absolute_uri(image_url)
+            return request.build_absolute_uri('https://creative.kg' + image_url)
         except ValueError:
             return None
 
@@ -59,7 +59,7 @@ class ReportsSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         try:
             report_url = report.report_text.url
-            return request.build_absolute_uri(report_url)
+            return request.build_absolute_uri('https://creative.kg' + report_url)
         except ValueError:
             return None
             
@@ -76,7 +76,7 @@ class DocumentsSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         try:
             rule_url = about.rule_doc.url
-            return request.build_absolute_uri(rule_url)
+            return request.build_absolute_uri('https://creative.kg' + rule_url)
         except ValueError:
             return None
 
@@ -91,7 +91,7 @@ class DocumentsPolSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         try:
             politic_url = about.politic_doc.url
-            return request.build_absolute_uri(politic_url)
+            return request.build_absolute_uri('https://creative.kg' + politic_url)
         except ValueError:
             return None
 
@@ -107,7 +107,7 @@ class SupervisorySerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         try:
             image_url = supervisor.photo.url
-            return request.build_absolute_uri(image_url)
+            return request.build_absolute_uri('https://creative.kg' + image_url)
         except ValueError:
             return None
 
@@ -124,6 +124,6 @@ class FoundersSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         try:
             image_url = founder.image.url
-            return request.build_absolute_uri(image_url)
+            return request.build_absolute_uri('https://creative.kg' + image_url)
         except ValueError:
             return None    
