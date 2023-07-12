@@ -5,6 +5,10 @@ from django.db import models
 class Event(models.Model):
     name = models.CharField('Название статьи', max_length=400)
     text = models.TextField('Текст татьи')
+    name_kg = models.CharField('Название статьи_kg', max_length=400, null=True, blank=True)
+    text_kg = models.TextField('Текст татьи_kg', null=True, blank=True)
+    name_en = models.CharField('Название статьи_en', max_length=400, null=True, blank=True)
+    text_en = models.TextField('Текст татьи_en', null=True, blank=True)
     post_date = models.DateTimeField(auto_now_add=True)
     event_date = models.DateField('Дата проведения', auto_now_add=False)
     draft = models.BooleanField(default=False)

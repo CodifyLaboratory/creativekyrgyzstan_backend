@@ -12,7 +12,6 @@ from datetime import date
 # @permission_classes([IsAuthenticatedOrReadOnly])
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
-    print(queryset)
     serializer_class = EventSerializer
 
 class EventPastViewSet(viewsets.ModelViewSet):
@@ -29,3 +28,8 @@ class EventFutureViewSet(viewsets.ModelViewSet):
 class EventImagesViewSet(viewsets.ModelViewSet):
     queryset = EventImages.objects.all()
     serializer_class = EventImagesSerializer
+    
+    def get_serializer_context(self):
+        context = super(EventImagesViewSet, self).get_serializer_context()
+        context.update({"request": self.request})
+        return context

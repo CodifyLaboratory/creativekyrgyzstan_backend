@@ -20,8 +20,8 @@ class Members(models.Model):
     bio = models.TextField('Краткая биография', null= True, blank= True)
 
 
-    def __str__(self):
-        return f'{self.submit.full_name}'
+    def __str__(self) -> str:
+        return (str(self.submit))
 
     class Meta:
         verbose_name = 'Члены ассоциаций'

@@ -4,22 +4,37 @@ from association_member.models import Members
 from submit.models import Submit
 
 
+class AboutPictures(models.Model):
+    picture = models.ImageField('Картинка', upload_to='images/aboutus', null= True, blank= True) 
+
+    class Meta:
+        verbose_name = 'Картинка'
+        verbose_name_plural = 'Картинки'
+
+    def __str__(self) -> str:
+        return (str(self.picture))
+
 class AboutUs(models.Model):
-    short_description = models.TextField('Об Ассоциации')
-    mission = models.TextField('Миссия и ценности')  
+    description = models.TextField('Об Ассоциации', null=True, blank=True)
+    description_kg = models.TextField('Об Ассоциации_kg', null=True, blank=True)
+    description_en = models.TextField('Об Ассоциации_en', null=True, blank=True)
+    picture = models.ImageField('Картинка', upload_to='images/aboutus', null= True, blank= True) 
 
     class Meta:
         verbose_name = 'Об Ассоциации'
         verbose_name_plural = 'Об Ассоциации'
 
     def __str__(self) -> str:
-        return 'О нас '
+        return (str(self.description))
 
 
 class Advantages(models.Model):
-    about_us = models.ForeignKey(AboutUs, on_delete=models.SET_NULL, null=True, blank=True)
-    subtitle = models.CharField('Заголовка', max_length=300)
-    text = models.TextField('Текст')
+    subtitle = models.CharField('Заголовок', max_length=300, null=True, blank=True)
+    text = models.TextField('Текст', null=True, blank=True)
+    subtitle_kg = models.CharField('Заголовок_kg', max_length=300, null=True, blank=True)
+    text_kg = models.TextField('Текст_kg', null=True, blank=True)
+    subtitle_en = models.CharField('Заголовок_en', max_length=300, null=True, blank=True)
+    text_en = models.TextField('Текст_en', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Почему ценно быть членов АКИ'
@@ -28,7 +43,9 @@ class Advantages(models.Model):
 
 
 class Purpose(models.Model):
-    text = models.TextField('Текст')
+    text = models.TextField('Текст', null=True, blank=True)
+    text_kg = models.TextField('Текст_kg', null=True, blank=True)
+    text_en = models.TextField('Tекст_en', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Цели на год'
@@ -40,7 +57,7 @@ class Purpose(models.Model):
 
 
 class Founders(models.Model): 
-    founder = models.OneToOneField(Members, verbose_name='Выберите из Члены  АКИ или уже выбран чтобы посмотреть нажмите на карандаш', on_delete=models.SET_NULL, null=True, blank=True)
+    founder = models.OneToOneField(Submit, verbose_name='Выберите из Члены  АКИ или уже выбран чтобы посмотреть нажмите на карандаш', on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField('Фото руководителя', upload_to='images/photos', null= True, blank= True)
     info = models.TextField('Дополнительная информация', null=True, blank=True)   
 
@@ -49,7 +66,7 @@ class Founders(models.Model):
         verbose_name_plural = 'Учредители Ассоциации'
 
     def __str__(self) -> str:
-        return f'{self.founder.submit.full_name}, {self.founder.submit.company_name}'
+        return (str(self.founder))
 
 
 
@@ -64,18 +81,24 @@ class Supervisory(models.Model):  #наблюдательный совет
 
 
     def __str__(self) -> str:
-        return f'{self.member.submit.full_name}, {self.member.submit.company_name}'
+        return (str(self.member))
 
 
 from .validators import validate_file_extension
 
 class Reports(models.Model):
-    name = models.TextField('Название отчета')
+    name = models.TextField('Название отчета', blank=True, null=True)
     short_description = models.TextField('Краткое описание', blank=True, null=True)
-    report_text = models.FileField('Отчеты', upload_to='static/reports/%d/%m/%Y', validators=[validate_file_extension])
+    name_kg = models.TextField('Название отчета_kg', blank=True, null=True)
+    short_description_kg = models.TextField('Краткое описание_kg', blank=True, null=True)
+    name_en = models.TextField('Название отчета_en', blank=True, null=True)
+    short_description_en = models.TextField('Краткое описание_en', blank=True, null=True)
+    report_text = models.FileField('Отчеты', upload_to='static/reports/', validators=[validate_file_extension])
     created_date = models.DateField('Дата создания', blank=True, null=True)
     signature = models.TextField('Должность Ф.И.О. подпись', blank=True, null=True)
     add_info = models.TextField('Дополнительная информация', blank=True, null=True)
+    add_info_kg = models.TextField('Дополнительная информация_kg', blank=True, null=True)
+    add_info_en = models.TextField('Дополнительная информация_en', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Отчет'
@@ -87,16 +110,28 @@ class Reports(models.Model):
 
 
 class Documents(models.Model):
-    rule_doc = models.FileField('Устав', upload_to='static/document/%d/%m/%Y', validators=[validate_file_extension])            
-    politic_doc = models.FileField('Учетная политика', upload_to='static/document/%d/%m/%Y', validators=[validate_file_extension])   
+    name = models.CharField('Название документа', max_length=500, null=True, blank=True)
+    name_kg = models.CharField('Название документа_kg', max_length=500, null=True, blank=True)
+    name_en = models.CharField('Название документа_en', max_length=500, null=True, blank=True)  
+    rule_doc = models.FileField('Устав', upload_to='static/document/', validators=[validate_file_extension])              
 
-    
     class Meta:
-        verbose_name = 'Устав, Учетная политика'
-
+        verbose_name = 'Устав'
 
     def __str__(self) -> str:
-        return f'Устав, Учетная политика'        
+        return f'{self.name}' 
+
+class DocumentsPol(models.Model):
+    name = models.CharField('Название документа', max_length=500, null=True, blank=True)
+    name_kg = models.CharField('Название документа_kg', max_length=500, null=True, blank=True)
+    name_en = models.CharField('Название документа_en', max_length=500, null=True, blank=True)            
+    politic_doc = models.FileField('Учетная политика', upload_to='static/document/', validators=[validate_file_extension])   
+
+    class Meta:
+        verbose_name = 'Учетная политика'
+
+    def __str__(self) -> str:
+        return f'{self.name}'        
     
     
 
