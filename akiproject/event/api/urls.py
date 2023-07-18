@@ -2,9 +2,9 @@ from rest_framework import routers, urlpatterns
 from .views import EventViewSet, EventPastViewSet, EventFutureViewSet, EventImagesViewSet
 
 router = routers.DefaultRouter()
-router.register('api/event', EventViewSet, 'event')
-router.register('api/eventpast', EventPastViewSet, 'eventpast')
-router.register('api/eventfuture', EventFutureViewSet, 'eventfuture')
-router.register('api/eventimages', EventImagesViewSet, 'eventimages')
+router.register('event', EventViewSet, 'event')
+router.register('eventpast', EventPastViewSet, 'eventpast')
+router.register('eventfuture', EventFutureViewSet, 'eventfuture')
+router.register('eventimages', EventImagesViewSet, 'eventimages')
 
 urlpatterns = router.urls

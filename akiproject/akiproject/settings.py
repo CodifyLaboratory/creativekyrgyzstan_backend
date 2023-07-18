@@ -1,11 +1,17 @@
 from pathlib import Path
 import os
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR2 = Path('C:\Real Hero\Content\Real Projects\AKI-Creative-Project').absolute()
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-CSRF_TRUSTED_ORIGINS = ['https://creative.kg', 'http://localhost:3000']
+SECRET_KEY = config('SECRET_KEY')
+
+DEBUG = config('DEBUG')
+
+CSRF_TRUSTED_ORIGINS = ['https://creative.kg', 'http://localhost:3000', 'https://aki-creative-project.vercel.app']
+
+ALLOWED_HOSTS = ['127.0.0.1', '206.189.105.19', 'creative.kg', 'localhost', 'aki-creative-project.vercel.app']
+
 
 INSTALLED_APPS = [
     'modeltranslation',
@@ -23,7 +29,6 @@ INSTALLED_APPS = [
     'about_us',
     'submit',
     'event',
-    'frontend',
     'resources',
     'corsheaders',
     'ckeditor',
@@ -65,6 +70,18 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'akiproject.wsgi.application'
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': config('DB_ENGINE'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -119,20 +136,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-
-MEDIA_URL = 'images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'frontend/build/images/')
-
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
 ]
+
 STATIC_URL = '/back-static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'back-static/')
 
-# MEDIA_URL = 'images/'
-# MEDIA_ROOT = os.path.join(BASE_DIR2, 'build/images/')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-# STATIC_URL = 'static/'
 
 REACT_ROUTES = [
     '',
@@ -150,8 +163,37 @@ REACT_ROUTES = [
     'resource/utility',
 ]
 
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
 
+# CORS
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+
+# CKEDITOR
 CKEDITOR_BASEPATH = os.path.join(BASE_DIR, '/static/ckeditor/ckeditor/')
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
@@ -188,7 +230,7 @@ CKEDITOR_CONFIGS = {
                 # put the name of your editor.ui.addButton here
                 'Preview',
                 'Maximize',
-                'Youtube' 
+                'Youtube'
             ]},
         ],
         'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
@@ -219,8 +261,3 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
-
-try:
-    from .local_settings import *
-except ImportError:
-    from .prod_settings import *

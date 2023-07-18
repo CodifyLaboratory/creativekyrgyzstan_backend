@@ -139,5 +139,7 @@ dmypy.json
 
 .migrations
 .media
+*media
 .static
+*static
 .statifiles
