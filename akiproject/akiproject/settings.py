@@ -8,9 +8,9 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG')
 
-CSRF_TRUSTED_ORIGINS = ['https://creative.kg', 'http://localhost:3000', 'https://aki-creative-project.vercel.app']
+CSRF_TRUSTED_ORIGINS = ['https://creative.kg', 'https://www.creative.kg', 'http://localhost:3000', 'https://aki-creative-project.vercel.app']
 
-ALLOWED_HOSTS = ['127.0.0.1', '206.189.105.19', 'creative.kg', 'localhost', 'aki-creative-project.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', '206.189.105.19', 'creative.kg', 'www.creative.kg', 'localhost', 'aki-creative-project.vercel.app']
 
 
 INSTALLED_APPS = [
